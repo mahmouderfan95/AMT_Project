@@ -20,7 +20,7 @@
                             <h2>{{\App\Models\User::where('person_type','st')->count()}}</h2>
                         </div>
                         <div class="cart-for">
-                            <h3><span>1.3%</span> Than last year</h3>
+{{--                            <h3><span>1.3%</span> Than last year</h3>--}}
                         </div>
                     </div>
                     <!-- cart -->
@@ -38,7 +38,7 @@
                             <h2>{{\App\Models\User::where('person_type','dr')->count()}}</h2>
                         </div>
                         <div class="cart-for">
-                            <h3><span>1.3%</span> Than last year</h3>
+{{--                            <h3><span>1.3%</span> Than last year</h3>--}}
                         </div>
                     </div>
                     <!-- cart -->
@@ -56,7 +56,7 @@
                             <h2>{{\App\Models\User::where('person_type','ass')->count()}}</h2>
                         </div>
                         <div class="cart-for">
-                            <h3><span>1.3%</span> Than last year</h3>
+{{--                            <h3><span>1.3%</span> Than last year</h3>--}}
                         </div>
                     </div>
                     <!-- cart -->
@@ -74,7 +74,7 @@
                             <h2>15</h2>
                         </div>
                         <div class="cart-for">
-                            <h3><span>1.3%</span> Than last year</h3>
+{{--                            <h3><span>1.3%</span> Than last year</h3>--}}
                         </div>
                     </div>
                     <!-- cart -->
@@ -129,45 +129,47 @@
                             ></button>
                         </div>
 
-                        <h5 class="modal-title text-center">Add New Staff</h5>
+                        <h5 class="modal-title text-center">Edit Profile</h5>
 
                         <div class="modal-body">
-                            <input
-                                type="file"
-                                class="form-control"
-                                id="inputGroupFile01"
-                            />
-
-                            <input
-                                type="number"
-                                class="form-control"
-                                id="inputEmail3"
-                                placeholder="ID"
-                            />
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder=" Name"
-                                aria-label="First name"
-                            />
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="inputEmail3"
-                                placeholder="Email"
-                            />
-                        </div>
-
-                        <input
-                            type="password"
-                            class="form-control"
-                            placeholder="password"
-                            id="inputPassword4"
-                        />
-                        <div class="modal-footer">
-                            <button type="button" class="clos" data-bs-dismiss="modal">
-                                Email
-                            </button>
+                            <form action="{{route('userUpdateProfile',auth('web')->user()->id)}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input
+                                    name="image"
+                                    type="file"
+                                    class="form-control"
+                                    id="inputGroupFile01"
+                                />
+                                <input
+                                    name="staff_id"
+                                    type="number"
+                                    class="form-control"
+                                    id="inputEmail3"
+                                    placeholder="ID"
+                                    value="{{$user->staff_id}}"
+                                />
+                                <input
+                                    name="name"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder=" Name"
+                                    aria-label="First name"
+                                    value="{{$user->name}}"
+                                />
+                                <input
+                                    name="email"
+                                    type="email"
+                                    class="form-control"
+                                    id="inputEmail3"
+                                    placeholder="Email"
+                                    value="{{$user->email}}"
+                                />
+                                <div class="modal-footer">
+                                    <button type="submit" class="clos" data-bs-dismiss="modal">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

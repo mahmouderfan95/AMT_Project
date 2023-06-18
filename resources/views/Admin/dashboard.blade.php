@@ -1,5 +1,5 @@
 @extends('Admin.layouts.mastar')
-@section('title', __('site.home'))
+@section('title','Home page')
 @section('content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -16,11 +16,11 @@
                                     <div class="media d-flex">
                                         <a href="#">
                                             <div class="media-body text-left">
-                                                <h3 class="info">{{ App\Models\Admin::count() }}</h3>
+                                                <h3 class="info">{{ App\Models\User::where('person_type','ass')->count() }}</h3>
                                                 <h6>Assistant</h6>
                                             </div>
                                             <div>
-                                                <i class="icon-users success font-large-2 float-right"></i>
+                                                <i class="icon-user-female success font-large-2 float-right"></i>
                                             </div>
                                         </a>
                                     </div>
@@ -38,11 +38,11 @@
                                     <div class="media d-flex">
                                         <a href="#">
                                             <div class="media-body text-left">
-                                                <h3 class="warning">{{ App\Models\Admin::count() }}</h3>
+                                                <h3 class="warning">{{ App\Models\User::where('person_type','st')->count() }}</h3>
                                                 <h6>Students</h6>
                                             </div>
                                             <div>
-                                                <i class="icon-notebook warning font-large-2 float-right"></i>
+                                                <i class="icon-user warning font-large-2 float-right"></i>
                                             </div>
                                         </a>
                                     </div>
@@ -60,7 +60,7 @@
                                     <div class="media d-flex">
                                         <a href="#">
                                             <div class="media-body text-left">
-                                                <h3 class="success">{{ App\Models\Admin::count() }}</h3>
+                                                <h3 class="success">{{ App\Models\Course::count() }}</h3>
                                                 <h6>Courses</h6>
                                             </div>
                                             <div>
@@ -82,11 +82,11 @@
                                     <div class="media d-flex">
                                         <a href="#">
                                             <div class="media-body text-left">
-                                                <h3 class="success">{{ App\Models\Admin::count() }}</h3>
+                                                <h3 class="success">{{ App\Models\User::where('person_type','dr')->count() }}</h3>
                                                 <h6>Doctors</h6>
                                             </div>
                                             <div>
-                                                <i class="icon-notebook info font-large-2 float-right"></i>
+                                                <i class="icon-user-follow info font-large-2 float-right"></i>
                                             </div>
                                         </a>
                                     </div>

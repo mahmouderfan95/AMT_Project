@@ -46,4 +46,6 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::get('user/search/id',[\App\Http\Controllers\Website\WebsiteController::class,'searchUser'])->name('search.user');
     // att student
     Route::get('attend/student/{student_id}/{course_id}/{att}',[\App\Http\Controllers\Website\WebsiteController::class,'attendSt'])->name('attendSt');
+    // user update profile
+    Route::post('user/{id}/update/profile',[\App\Http\Controllers\Website\WebsiteController::class,'userUpdateProfile'])->name('userUpdateProfile');
 });

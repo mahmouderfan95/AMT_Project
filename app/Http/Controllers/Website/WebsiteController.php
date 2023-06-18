@@ -257,4 +257,24 @@ class WebsiteController extends Controller
             return redirect()->back();
         }
     }
+
+    public function userUpdateProfile(Request $request,$id){
+        try{
+            Alert::success('success message','Staff Added Success');
+            $user = User::findOrFail($id);
+            if($request->image){
+                $filename = time().'.'.$request->image->extension();
+                $request->image->move(public_path('dashboard/uploads/staffs/'), $filename);
+                $user->image = $filename;
+            }
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->staff_id = $request->staff_id;
+            $user->save();
+            return redirect()->back();
+        }catch (\Exception $exception){
+            Alert::error('error msg',$exception->getMessage());
+            return redirect()->back();
+        }
+    }
 }

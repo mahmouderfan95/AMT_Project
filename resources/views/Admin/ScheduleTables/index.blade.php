@@ -80,19 +80,19 @@
 @push('js')
     <script>
         let catsTable = $('#students-table').DataTable({
-            dom: 'Bprltip',
-            buttons: [
-                'excel',
-                'pdf',
-                {
-                    extend: 'print',
-                    text: 'Print selected',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                },
-                'colvis'
-            ],
+            // dom: 'Bprltip',
+            // buttons: [
+            //     'excel',
+            //     'pdf',
+            //     {
+            //         extend: 'print',
+            //         text: 'Print selected',
+            //         exportOptions: {
+            //             columns: ':visible'
+            //         }
+            //     },
+            //     'colvis'
+            // ],
             select: true,
             serverSide: true,
             processing: true,
