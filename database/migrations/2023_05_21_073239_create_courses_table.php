@@ -18,6 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->tinyInteger('level');
             $table->enum('category',['is','cs']);
+            $table->time('start_from_time');
+            $table->time('end_in_time');
+            $table->date('start_from_date');
             $table->timestamps();
         });
     }

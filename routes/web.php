@@ -44,4 +44,6 @@ Route::group(['middleware' => 'auth:web'],function(){
     Route::get('delete/user/{id}',[\App\Http\Controllers\Website\WebsiteController::class,'deleteUser'])->name('delete_user');
     // search by staff_id
     Route::get('user/search/id',[\App\Http\Controllers\Website\WebsiteController::class,'searchUser'])->name('search.user');
+    // att student
+    Route::get('attend/student/{student_id}/{course_id}/{att}',[\App\Http\Controllers\Website\WebsiteController::class,'attendSt'])->name('attendSt');
 });

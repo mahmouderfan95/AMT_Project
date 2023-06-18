@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Courses\Store;
 use App\Models\Course;
@@ -10,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\DataTables;
-
 class CourseController extends Controller
 {
     public function index(){
@@ -33,7 +31,9 @@ class CourseController extends Controller
     }
 
     public function create(){
-        $users = User::where('person_type','!=','st')->get(['id','name']);
+        $users = User::where('person_type','!=','st')
+            ->where('person_type','!=','super')
+            ->get(['id','name']);
         return view('Admin.courses.create',compact('users'));
     }
 
@@ -47,6 +47,9 @@ class CourseController extends Controller
                 'user_id' => $request->user_id,
                 'level' => $request->level,
                 'category' => $request->category,
+                'start_from_time' => $request->start_from_time,
+                'end_in_time' => $request->end_in_time,
+                'start_from_date' => $request->start_from_date,
             ]);
             Alert::success('success msg', 'Course Added');
             return redirect(route('courses.index'));
@@ -68,9 +71,9 @@ class CourseController extends Controller
         }
     }
 
-    public function update(Request $request){
+    public function update(Store $request){
         try{
-//            $request->validated();
+            $request->validated();
             // toast('updated success','success');
             $course = Course::where('id',$request->id)
                 ->update([
@@ -79,12 +82,10 @@ class CourseController extends Controller
                     'user_id' => $request->user_id,
                     'level' => $request->level,
                     'category' => $request->category,
+                    'start_from_time' => $request->start_from_time,
+                    'end_in_time' => $request->end_in_time,
+                    'start_from_date' => $request->start_from_date,
                 ]);
-//            if($request->image){
-//                $filename = time().'.'.$request->image->extension();
-//                $request->image->move(public_path('dashboard/uploads/staffs/'), $filename);
-//                $student->image = $filename;
-//            }
             Alert::success('success msg', 'Course Updated');
             return redirect(route('courses.index'));
             // return redirect()->back();

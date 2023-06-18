@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\StudentAttendance;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +21,7 @@ class WebsiteController extends Controller
         if ($search !== ""){
 //            dd('yes');
             $staffs = User::where('person_type','!=','st')
+                ->where('person_type','!=','super')
                 ->where('name','LIKE',"%$search%")
                 ->orWhere('email','LIKE',"%$search%")
                 ->paginate(10);
@@ -37,6 +39,7 @@ class WebsiteController extends Controller
         }else{
 //            dd('no');
             $staffs = User::where('person_type','!=','st')
+                ->where('person_type','!=','super')
                 ->orderBy('id','desc')
                 ->paginate(10);
         }
@@ -44,10 +47,20 @@ class WebsiteController extends Controller
     }
     public function studentList(Request $request){
         $search = $request['search'] ? $request['search'] : "";
-        if ($search !== ""){
+        $st_category = $request['st_category'];
+        $st_level = $request['st_level'];
+        if ($search != ""){
             $students = User::where('person_type','st')
                 ->where('name','LIKE',"%$search%")
                 ->orWhere('email','LIKE',"%$search%")
+                ->paginate(10);
+        }elseif($st_category != ""){
+            $students = User::where('person_type','st')
+                ->where('st_category',$request->st_category)
+                ->paginate(10);
+        }elseif($st_level != ""){
+            $students = User::where('person_type','st')
+                ->where('st_level',$request->st_level)
                 ->paginate(10);
         }else{
             $students = User::where('person_type','st')
@@ -139,31 +152,32 @@ class WebsiteController extends Controller
 
     public function getStaffs(Request $request){
         try{
-            $person = $request['person_type'];
+            $course_id = $request['course_id'];
             $category = $request['category'];
             $level = $request['level'];
-            if ($person != ""){
+            if ($course_id != ""){
 //            dd('yes');
-                $staffs = User::where('person_type',$request->person_type)
-                    ->where('person_type','!=','super')
+                $staffs = Course::where('id',$request->course_id)
+//                    ->where('person_type','!=','super')
                     ->paginate(10);
             }elseif($category != ""){
 //                dd('cat');
-                $staffs = User::where('st_category',$request->category)
-                    ->where('person_type','st')
+                $staffs = Course::where('category',$request->category)
+//                    ->where('person_type','st')
                     ->paginate(10);
             }elseif($level != ""){
 //                dd('lev');
-                $staffs = User::where('st_level',$request->level)
-                    ->where('person_type','st')
+                $staffs = Course::where('level',$request->level)
+//                    ->where('person_type','st')
                     ->paginate(10);
             }else{
 //            dd('no');
-                $staffs = User::orderBy('id','desc')
-                    ->where('person_type','!=','super')
+                $staffs = Course::orderBy('id','desc')
+//                    ->where('person_type','!=','super')
                     ->paginate(10);
             }
-            return view('website.getStaffs',compact('staffs'));
+            $courses = Course::get(['id','name']);
+            return view('website.getStaffs',compact('staffs','courses'));
         }catch (\Exception $exception){
             Alert::error('error msg',$exception->getMessage());
             return redirect()->back();
@@ -183,13 +197,60 @@ class WebsiteController extends Controller
             return redirect()->back();
         }
     }
-
     public function searchUser(Request $request){
         try{
             $search = $request->search;
             if ($search !== ""){
                 $user = User::where('staff_id',$request->search)->first();
                 return view('website.data_after_search',compact('user'));
+            }
+        }catch (\Exception $exception){
+            Alert::error('error msg',$exception->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function attendSt($st_id,$course_id,$att){
+        try{
+            Alert::success('Student attend','Attend Now');
+            $attend = StudentAttendance::where('student_id',$st_id)->where('course_id',$course_id)
+                ->first();
+            if ($att == 1){
+                $attend->lecturer_one = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 2){
+                $attend->lecturer_two = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 3){
+                $attend->lecturer_three = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 4){
+                $attend->lecturer_four = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 5){
+                $attend->lecturer_five = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 6){
+                $attend->lecturer_six = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 7){
+                $attend->lecturer_seven = true;
+                $attend->save();
+                return redirect()->back();
+            }elseif($att == 8){
+                $attend->lecturer_eight = true;
+                $attend->save();
+                return redirect()->back();
+            }else{
+                $attend->lecturer_nine = true;
+                $attend->save();
+                return redirect()->back();
             }
         }catch (\Exception $exception){
             Alert::error('error msg',$exception->getMessage());

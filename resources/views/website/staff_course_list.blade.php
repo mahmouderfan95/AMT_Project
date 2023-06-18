@@ -16,10 +16,8 @@
                 </select>
             </div>
             <!-- one -->
-
             <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mt-5">
                 <!-- tow -->
-
                 <select
                     class="form-select wedth-form"
                     aria-label="Default select example"
@@ -30,7 +28,6 @@
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
-
                 <!-- tow -->
             </div>
         </div>
@@ -128,6 +125,4 @@
             </div>
         </div>
     </div>
-
-
 @stop

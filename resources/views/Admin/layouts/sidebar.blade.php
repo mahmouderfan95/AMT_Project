@@ -31,6 +31,12 @@
                     <span data-i18n="Classic Menu">Courses</span>
                 </a>
             </li>
+            <li>
+                <a class="menu-item" href="{{route('ScheduleTables.index')}}">
+                    <i class="la la-table"></i>
+                    <span data-i18n="Classic Menu">Add students to lectures</span>
+                </a>
+            </li>
 {{--            @if (auth()->user()->hasPermission('read_settings'))--}}
 {{--                <li>--}}
 {{--                    <a class="menu-item" href="{{ route('admin.settings.edit') }}">--}}

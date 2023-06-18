@@ -5,15 +5,15 @@ use \App\Http\Controllers\Admin\StudentController;
 use \App\Http\Controllers\Admin\DoctorController;
 use \App\Http\Controllers\Admin\CourseController;
 use \App\Http\Controllers\Admin\AssistantController;
+use \App\Http\Controllers\Admin\ScheduleTableController;
 // login route admin
-
 Route::group(['as' => 'admin.','prefix' => 'admin'], function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
     Route::post('logout/', [AuthController::class, 'logout'])->name('logout');
 });
 Route::group(['prefix' => 'admin','middleware' => 'auth:admin'],function(){
-   Route::get('/',[AuthController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/',[AuthController::class,'dashboard'])->name('admin.dashboard');
     // students route
     Route::resource('students',StudentController::class)->except('show');
     Route::get('students/data',[StudentController::class,'getData'])->name('students.data');
@@ -26,7 +26,8 @@ Route::group(['prefix' => 'admin','middleware' => 'auth:admin'],function(){
     // courses route
     Route::resource('courses',CourseController::class)->except('show');
     Route::get('courses/data',[CourseController::class,'getData'])->name('courses.data');
+    // ScheduleTables route
+    Route::resource('ScheduleTables',ScheduleTableController::class)->except('show');
+    Route::get('ScheduleTables/data',[ScheduleTableController::class,'getData'])->name('ScheduleTables.data');
 });
-
-
 ?>

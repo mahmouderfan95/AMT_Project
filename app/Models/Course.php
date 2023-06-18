@@ -10,4 +10,8 @@ class Course extends Model
     use HasFactory;
     protected $guarded = [];
     protected $hidden = ['created_at','updated_at'];
+
+    public function sts(){
+        return $this->hasMany(ScheduleTable::class,'course_id');
+    }
 }

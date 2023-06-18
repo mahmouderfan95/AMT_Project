@@ -12,14 +12,15 @@
             <!-- one -->
             <div class="home-one">
                 <select
-                    name="category"
+                    name="course_id"
                     class="form-select wedth-form"
                     aria-label="Default select example"
                 >
                     <i class="fa-solid fa-user"></i>
-                    <option value="" hidden>Category</option>
-                    <option value="is">Is</option>
-                    <option value="cs">Cs</option>
+                    <option value="" hidden>Subjects</option>
+                    @foreach($courses as $course)
+                        <option value="{{$course->id}}">{{$course->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <!-- one -->
@@ -42,15 +43,14 @@
             <!-- three -->
             <div class="home-three">
                 <select
-                    name="person_type"
+                    name="category"
                     class="form-select wedth-form"
                     aria-label="Default select example"
                 >
                     <i class="fa-solid fa-user"></i>
-                    <option value="" hidden>Type</option>
-                    <option value="st">Student</option>
-                    <option value="dr">Doctor</option>
-                    <option value="ass">Assistant</option>
+                    <option value="" hidden>Choose Category</option>
+                    <option value="is">Is</option>
+                    <option value="cs">Cs</option>
                 </select>
             </div>
             <!-- three -->
@@ -104,24 +104,55 @@
                 <tbody>
                     @if($staffs->count() > 0)
                         @foreach($staffs as $index => $item)
-                            <tr>
-                                <th scope="row">{{$index + 1}}</th>
-                                <td>{{$item->staff_id}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->email}}</td>
-                                <td>
-                                    <span class="te-red">1</span><span class="te-gren">3</span>
-                                    <span class="te-red">2</span><span class="te-gren">4</span>
-                                    <span class="te-red">5</span><span class="te-gren">6</span>
-                                    <span class="te-de">5</span><span class="te-de">6</span>
-                                </td>
-                                <td>
-                                    <a href="{{route('delete_user',$item->id)}}">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                </td>
-                                <td><i class="fa-solid fa-pen"></i></td>
-                            </tr>
+                            @if($item->sts->count() > 0)
+                                @foreach($item->sts as $index => $sts)
+                                    <tr>
+                                        <th scope="row">{{$index + 1}}</th>
+                                        <td>{{$sts->student->staff_id}}</td>
+                                        <td>{{$sts->student->name}}</td>
+                                        <td>{{$sts->student->email}}</td>
+                                        <td>
+                                            @php
+                                                $att = \App\Models\StudentAttendance::where('student_id',$sts->student_id)
+                                                    ->where('course_id',$sts->course_id)->first();
+                                            @endphp
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,1])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_one == 1 ? 'te-gren' : 'te-de'}}">1</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,2])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_two == 1 ? 'te-gren' : 'te-de'}}">2</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,3])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_three == 1 ? 'te-gren' : 'te-de'}}">3</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,4])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_four == 1 ? 'te-gren' : 'te-de'}}">4</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,5])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_five == 1 ? 'te-gren' : 'te-de'}}">5</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,6])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_six == 1 ? 'te-gren' : 'te-de'}}">6</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,7])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_seven == 1 ? 'te-gren' : 'te-de'}}">7</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,8])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_eight == 1 ? 'te-gren' : 'te-de'}}">8</span>
+                                            </a>
+                                            <a href="{{route('attendSt',[$sts->student->id,$sts->course->id,9])}}" style="text-decoration: none">
+                                                <span class="{{$att->lecturer_nine == 1 ? 'te-gren' : 'te-de'}}">9</span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{route('delete_user',$item->id)}}">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </td>
+                                        <td><i class="fa-solid fa-pen"></i></td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         @endforeach
                     @endif
                 </tbody>

@@ -1,5 +1,5 @@
 @extends('Admin.layouts.mastar')
-@section('title','Create Student')
+@section('title','Create Course')
 @section('css')
 @endsection
 @section('content')
@@ -85,6 +85,33 @@
                                                             </select>
                                                         </div>
                                                         @error('category')
+                                                        <p class="text-danger" style="font-size: 12px">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="start_from_time">start from time</label>
+                                                            <input required="required" type="time" name="start_from_time" id="start_from_time" class="form-control" value="{{old('start_from_time')}}">
+                                                        </div>
+                                                        @error('start_from_time')
+                                                        <p class="text-danger" style="font-size: 12px">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="end_in_time">End in time</label>
+                                                            <input required="required" type="time" name="end_in_time" id="end_in_time" class="form-control" value="{{old('end_in_time')}}">
+                                                        </div>
+                                                        @error('end_in_time')
+                                                        <p class="text-danger" style="font-size: 12px">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="start_from_date">Start From Date</label>
+                                                            <input required="required" type="date" name="start_from_date" id="start_from_date" class="form-control" value="{{old('start_from_date')}}">
+                                                        </div>
+                                                        @error('start_from_date')
                                                         <p class="text-danger" style="font-size: 12px">{{ $message }}</p>
                                                         @enderror
                                                     </div>

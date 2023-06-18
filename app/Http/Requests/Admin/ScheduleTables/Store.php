@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Courses;
+namespace App\Http\Requests\Admin\ScheduleTables;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,29 +25,23 @@ class Store extends FormRequest
             case 'POST':
             {
                 return [
-                    'name' => 'required|string',
                     'course_id' => 'required',
                     'user_id'  => 'required|exists:users,id',
-                    'level' => 'required',
-                    'category' => 'required',
-                    'start_from_time' => 'required',
-                    'end_in_time' => 'required',
-                    'start_from_date' => 'required',
+//                    'start_from_time' => 'required',
+//                    'end_in_time' => 'required',
+//                    'start_from_date' => 'required',
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
                 return [
-                    'id' => 'required|exists:courses,id',
-                    'name' => 'required|string',
+                    'id' => 'required|exists:schedule_tables,id',
                     'course_id' => 'required',
                     'user_id'  => 'required|exists:users,id',
-                    'level' => 'required',
-                    'category' => 'required',
-                    'start_from_time' => 'required',
-                    'end_in_time' => 'required',
-                    'start_from_date' => 'required',
+//                    'start_from_time' => 'required',
+//                    'end_in_time' => 'required',
+//                    'start_from_date' => 'required',
                 ];
             }
             default: break;

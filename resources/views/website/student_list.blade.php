@@ -5,12 +5,12 @@
             <div class="no-wid">
                 <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12"></div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mt-5">
-                    <select name="category"
+                    <select name="st_category"
                             class="form-select wedth-form"
                             aria-label="Default select example"
                     >
                         <i class="fa-solid fa-user"></i>
-                        <option hidden value="">Level</option>
+                        <option hidden value="">Category</option>
                         <option value="is">IS</option>
                         <option value="cs">CS</option>
                     </select>
@@ -18,14 +18,16 @@
                 <!-- one -->
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mt-5">
                     <!-- tow -->
-                    <select name="level"
+                    <select name="st_level"
                             class="form-select wedth-form"
                             aria-label="Default select example"
                     >
                         <i class="fa-solid fa-user"></i>
                         <option hidden value="">Level</option>
-                        <option value="is">IS</option>
-                        <option value="cs">CS</option>
+                        <option value="is">1</option>
+                        <option value="cs">2</option>
+                        <option value="cs">3</option>
+                        <option value="cs">4</option>
                     </select>
                     <!-- tow -->
                 </div>

@@ -74,7 +74,7 @@
 {{--                        <th scope="col">leave</th>--}}
                         <th scope="col">Email</th>
                         <th scope="col">Staff Type</th>
-                        <th class="dar" scope="col">Attendance</th>
+{{--                        <th class="dar" scope="col">Attendance</th>--}}
                     </tr>
                     </thead>
                     <tbody>
@@ -88,12 +88,12 @@
             {{--                        <td>02:06 Pm</td>--}}
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->getType()}}</td>
-                                    <td>
-                                        <span class="te-red">1</span><span class="te-gren">3</span>
-                                        <span class="te-red">2</span><span class="te-gren">4</span>
-                                        <span class="te-red">5</span><span class="te-gren">6</span>
-                                        <span class="te-de">5</span><span class="te-de">6</span>
-                                    </td>
+{{--                                    <td>--}}
+{{--                                        <span class="te-red">1</span><span class="te-gren">3</span>--}}
+{{--                                        <span class="te-red">2</span><span class="te-gren">4</span>--}}
+{{--                                        <span class="te-red">5</span><span class="te-gren">6</span>--}}
+{{--                                        <span class="te-de">5</span><span class="te-de">6</span>--}}
+{{--                                    </td>--}}
                                 </tr>
                             @endforeach
                         @endif
