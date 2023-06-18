@@ -78,10 +78,9 @@
                             <th class="dar" scope="col">#No</th>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
-{{--                            <th scope="col">Arrival</th>--}}
-{{--                            <th scope="col">leave</th>--}}
                             <th scope="col">Email</th>
-                            <th class="dar" scope="col">Attendance</th>
+                            <th scope="col">GBA</th>
+                            <th scope="col">Category</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,15 +90,9 @@
                                     <th scope="row">{{$index + 1}}</th>
                                     <td>{{$item->staff_id}}</td>
                                     <td>{{$item->name}}</td>
-{{--                                    <td>10:06 Am</td>--}}
-{{--                                    <td>02:06 Pm</td>--}}
                                     <td>{{$item->email}}</td>
-                                    <td>
-                                        <span class="te-red">1</span><span class="te-gren">3</span>
-                                        <span class="te-red">2</span><span class="te-gren">4</span>
-                                        <span class="te-red">5</span><span class="te-gren">6</span>
-                                        <span class="te-de">5</span><span class="te-de">6</span>
-                                    </td>
+                                    <td>{{$item->st_gpa}}</td>
+                                    <td>{{$item->st_category}}</td>
                                 </tr>
                             @endforeach
                         @endif
@@ -123,6 +116,7 @@
                                     class="btn-close"
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
+                                    onclick="closeModal();"
                                 ></button>
                             </div>
                             <h5 class="modal-title text-center">Add New Student</h5>
@@ -202,5 +196,5 @@
         </div>
         <!-- modal -->
     </div>
-
+    @include('layouts.edit_profile')
 @stop

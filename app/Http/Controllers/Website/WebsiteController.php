@@ -15,6 +15,7 @@ use function Ramsey\Collection\offer;
 class WebsiteController extends Controller
 {
     public function staffList(Request $request){
+        $user = User::where('id',auth('web')->user()->id)->first();
         $search = $request['search'] ? $request['search'] : "";
         $person = $request['person_type'];
         $created = $request['created_at'];
@@ -43,9 +44,10 @@ class WebsiteController extends Controller
                 ->orderBy('id','desc')
                 ->paginate(10);
         }
-        return view('website.staff_list',compact('staffs','search'));
+        return view('website.staff_list',compact('staffs','search','user'));
     }
     public function studentList(Request $request){
+        $user = User::where('id',auth('web')->user()->id)->first();
         $search = $request['search'] ? $request['search'] : "";
         $st_category = $request['st_category'];
         $st_level = $request['st_level'];
@@ -67,15 +69,17 @@ class WebsiteController extends Controller
                 ->orderBy('id','desc')
                 ->paginate(10);
         }
-        return view('website.student_list',compact('students','search'));
+        return view('website.student_list',compact('students','search','user'));
     }
     public function courseList(){
+        $user = User::where('id',auth('web')->user()->id)->first();
         $courses = Course::get();
         $users = User::where('person_type','!=','st')->where('person_type','!=','super')->get(['id','name']);
         if (auth('web')->user()->person_type == 'super'){
-            return view('website.course_list',compact('courses','users'));
+            return view('website.course_list',compact('courses','users','user'));
         }else{
-            return view('website.staff_course_list',compact('courses','users'));
+            $courses = Course::where('user_id',auth('web')->user()->id)->get();
+            return view('website.staff_course_list',compact('courses','users','user'));
         }
     }
     public function report(){
@@ -127,11 +131,12 @@ class WebsiteController extends Controller
         }
     }
     public function mangeAttendance(){
+        $user = User::where('id',auth('web')->user()->id)->first();
         if (auth('web')->user()->person_type == 'super'){
-            return view('website.mangeAttendance');
+            return view('website.mangeAttendance',compact('user'));
         }else{
             $courses = Course::where('user_id',auth('web')->user()->id)->get(['id','name','level']);
-            return view('website.staffMangeAttendance',compact('courses'));
+            return view('website.staffMangeAttendance',compact('courses','user'));
         }
     }
     public function addCourse(Request $request){
@@ -141,7 +146,10 @@ class WebsiteController extends Controller
                'course_id'  =>$request->course_id,
                'user_id' => $request->user_id,
                'level' => $request->level,
-                'category' => $request->category
+                'category' => $request->category,
+                'start_from_time' => $request->start_from_time,
+                'end_in_time' => $request->end_in_time,
+                'start_from_date' => $request->start_from_date,
             ]);
             return redirect()->back();
         }catch (\Exception $exception){
@@ -152,6 +160,7 @@ class WebsiteController extends Controller
 
     public function getStaffs(Request $request){
         try{
+            $user = User::where('id',auth('web')->user()->id)->first();
             $course_id = $request['course_id'];
             $category = $request['category'];
             $level = $request['level'];
@@ -177,7 +186,7 @@ class WebsiteController extends Controller
                     ->paginate(10);
             }
             $courses = Course::get(['id','name']);
-            return view('website.getStaffs',compact('staffs','courses'));
+            return view('website.getStaffs',compact('staffs','courses','user'));
         }catch (\Exception $exception){
             Alert::error('error msg',$exception->getMessage());
             return redirect()->back();

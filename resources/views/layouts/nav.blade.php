@@ -13,7 +13,7 @@
         ></button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
             <li>
-                <a onclick="myFunction()" class="dropdown-item lang" href="#"
+                <a onclick="myFunction_edit_profile()" class="dropdown-item lang btn_edit_profile" href="#"
                 ><i class="fa-solid fa-pen-to-square"></i> edit profile</a
                 >
             </li>

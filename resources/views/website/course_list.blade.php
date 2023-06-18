@@ -15,7 +15,7 @@
 {{--                </div>--}}
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     @if(auth('web')->user()->person_type == 'super')
-                        <button class="btn btn-primary" type="button" onclick="myFunction()">
+                            <button class="btn btn-primary" type="button" onclick="myFunction()">
                             <i class="fa-solid fa-plus"></i> Add New Course
                         </button>
                     @endif
@@ -55,6 +55,7 @@
                                 class="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
+                                onclick="closeModal();"
                             ></button>
                         </div>
                         <h5 class="modal-title text-center">Add New Course</h5>
@@ -95,6 +96,9 @@
                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                     @endforeach
                                 </select>
+                                <input required="required" type="time" name="start_from_time" id="start_from_time" class="form-control" value="{{old('start_from_time')}}">
+                                <input required="required" type="time" name="end_in_time" id="end_in_time" class="form-control" value="{{old('end_in_time')}}">
+                                <input required="required" type="date" name="start_from_date" id="start_from_date" class="form-control" value="{{old('start_from_date')}}">
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="clos" data-bs-dismiss="modal">
@@ -108,6 +112,6 @@
         </div>
     </div>
     <!-- modal -->
-
+    @include('layouts.edit_profile')
 
 @stop

@@ -107,6 +107,7 @@
                                         class="btn-close"
                                         data-bs-dismiss="modal"
                                         aria-label="Close"
+                                        onclick="closeModal();"
                                     ></button>
                                 </div>
                                 <h5 class="modal-title text-center">Enter ID</h5>
@@ -140,4 +141,5 @@
         </div>
         <!-- container-fluid -->
     </div>
+    @include('layouts.edit_profile')
 @stop

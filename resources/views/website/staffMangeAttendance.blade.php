@@ -61,5 +61,5 @@
         </div>
     </div>
 
-
+    @include('layouts.edit_profile')
 @stop

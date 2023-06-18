@@ -117,6 +117,7 @@
                                 class="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
+                                onclick="closeModal();"
                             ></button>
                         </div>
                         <h5 class="modal-title text-center">Add New Staff</h5>
@@ -182,4 +183,5 @@
         </div>
     </div>
     <!-- modal -->
+    @include('layouts.edit_profile')
 @stop

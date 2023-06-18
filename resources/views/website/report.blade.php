@@ -6,20 +6,20 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="no-wid">
-                <!-- row -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fa-solid fa-trash"></i> Delete Course
-                    </button>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fa-solid fa-plus"></i> Add New Staff
-                    </button>
-                </div>
-            </div>
+{{--            <div class="no-wid">--}}
+{{--                <!-- row -->--}}
+{{--                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"></div>--}}
+{{--                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">--}}
+{{--                    <button class="btn btn-primary" type="button">--}}
+{{--                        <i class="fa-solid fa-trash"></i> Delete Course--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">--}}
+{{--                    <button class="btn btn-primary" type="button">--}}
+{{--                        <i class="fa-solid fa-plus"></i> Add New Staff--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 

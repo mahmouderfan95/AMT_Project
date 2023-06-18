@@ -117,7 +117,7 @@
     <!-- modal -->
     <div class="container">
         <div class="add">
-            <div class="modal" tabindex="-1">
+            <div class="modal edit_profile" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -126,6 +126,7 @@
                                 class="btn-close"
                                 data-bs-dismiss="modal"
                                 aria-label="Close"
+                                onclick="closeModal();"
                             ></button>
                         </div>
 

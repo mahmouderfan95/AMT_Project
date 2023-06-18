@@ -260,6 +260,7 @@
         </div>
     </div>
     <!-- modal -->
+    @include('layouts.edit_profile')
 
 @stop
 @push('js')

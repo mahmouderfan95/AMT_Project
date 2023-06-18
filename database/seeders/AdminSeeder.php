@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
         ]);
         // supervisor seeder
         $super = User::create([
-            'staff_id' => 'sup855',
+            'staff_id' => '855666',
             'name' => 'supervisor',
             'email' => 'super@super.com',
             'password' => bcrypt(123123123),
