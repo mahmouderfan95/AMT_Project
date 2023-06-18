@@ -5,18 +5,18 @@
 @section('content')
     <div class="container-fluid">
         <div class="stud">
-            <div class="container mt-5">
-                <div class="input-group mb-3 mt-5 d-flex justify-content-center">
-                    <input
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search"
-                        class="form-control search"
-                        aria-describedby="basic-addon2"
-                    />
-                    <span class="input-group-text" id="basic-addon2">Search</span>
-                </div>
-            </div>
+{{--            <div class="container mt-5">--}}
+{{--                <div class="input-group mb-3 mt-5 d-flex justify-content-center">--}}
+{{--                    <input--}}
+{{--                        type="search"--}}
+{{--                        placeholder="Search"--}}
+{{--                        aria-label="Search"--}}
+{{--                        class="form-control search"--}}
+{{--                        aria-describedby="basic-addon2"--}}
+{{--                    />--}}
+{{--                    <span class="input-group-text" id="basic-addon2">Search</span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="container mt-5">
                 <div class="row">
                     <!-- row -->
