@@ -7,7 +7,7 @@
                 <li class="nav-item mr-auto"><a class="navbar-brand" href="#"><img class="brand-logo" alt="modern admin logo"
 
 
-                                                                                   src="{{ asset('dashboard/app-assets/images/ico/apple-icon-120.png') }}"
+                                                                                   src="{{ asset('dashboard/app-assets/images/ico/logosvg.svg') }}"
                         >
                         <h3 class="brand-text"></h3>
                     </a></li>

@@ -20,7 +20,7 @@
                             <div class="card-header border-0">
                                 <div class="card-title text-center">
 
-                                    <div class="p-1"><img src="{{ asset('dashboard/app-assets/images/ico/apple-icon-120.png')}}"
+                                    <div class="p-1"><img src="{{ asset('dashboard/app-assets/images/ico/logosvg.svg') }}"
                                                           style="width:70px;"   alt="branding logo"></div>
 
                                 </div>
