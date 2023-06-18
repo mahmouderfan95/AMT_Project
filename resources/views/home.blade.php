@@ -17,7 +17,7 @@
                             <i class="fa-solid fa-user-group"></i>
                         </div>
                         <div class="cart-three">
-                            <h2>2.3k</h2>
+                            <h2>{{\App\Models\User::where('person_type','st')->count()}}</h2>
                         </div>
                         <div class="cart-for">
                             <h3><span>1.3%</span> Than last year</h3>
@@ -29,13 +29,13 @@
                     <!-- cart -->
                     <div class="cart">
                         <div class="cart-oen">
-                            <h1>Total Students</h1>
+                            <h1>Total Doctors</h1>
                         </div>
                         <div class="cart-tow">
                             <i class="fa-solid fa-user-group"></i>
                         </div>
                         <div class="cart-three">
-                            <h2>2.3k</h2>
+                            <h2>{{\App\Models\User::where('person_type','dr')->count()}}</h2>
                         </div>
                         <div class="cart-for">
                             <h3><span>1.3%</span> Than last year</h3>
@@ -47,13 +47,13 @@
                     <!-- cart -->
                     <div class="cart">
                         <div class="cart-oen">
-                            <h1>Total Students</h1>
+                            <h1>Total Assistants</h1>
                         </div>
                         <div class="cart-tow">
                             <i class="fa-solid fa-user-group"></i>
                         </div>
                         <div class="cart-three">
-                            <h2>2.3k</h2>
+                            <h2>{{\App\Models\User::where('person_type','ass')->count()}}</h2>
                         </div>
                         <div class="cart-for">
                             <h3><span>1.3%</span> Than last year</h3>
@@ -65,13 +65,13 @@
                     <!-- cart -->
                     <div class="cart">
                         <div class="cart-oen">
-                            <h1>Total Students</h1>
+                            <h1>Total Employees</h1>
                         </div>
                         <div class="cart-tow">
                             <i class="fa-solid fa-user-group"></i>
                         </div>
                         <div class="cart-three">
-                            <h2>2.3k</h2>
+                            <h2>15</h2>
                         </div>
                         <div class="cart-for">
                             <h3><span>1.3%</span> Than last year</h3>
@@ -92,90 +92,23 @@
                         <span class="anrel"></span>Top 5 Students Attendant:
                     </h2>
                     <!-- stu-mg -->
-                    <div class="stu-mg">
-                        <div class="stu-one">
-                            <img src="img/profil.png" width="30" height="30" alt="" />
-                        </div>
-                        <div class="stu-tow"><h2>Abdulrahman Emad</h2></div>
-                        <div class="stu-three"><span class="mya">100%</span></div>
-                        <div class="stu-for"><span class="mya">30Day</span></div>
-                    </div>
-                    <hr />
-                    <!-- stu-mg -->
-                    <div class="stu-mg">
-                        <div class="stu-one">
-                            <img src="img/profil.png" width="30" height="30" alt="" />
-                        </div>
-                        <div class="stu-tow"><h2>Abdulrahman Emad</h2></div>
-                        <div class="stu-three"><span class="mya">100%</span></div>
-                        <div class="stu-for"><span class="mya">30Day</span></div>
-                    </div>
-                    <hr />
-                    <!-- stu-mg -->
-                    <!-- stu-mg -->
-                    <div class="stu-mg">
-                        <div class="stu-one">
-                            <img src="img/profil.png" width="30" height="30" alt="" />
-                        </div>
-                        <div class="stu-tow"><h2>Abdulrahman Emad</h2></div>
-                        <div class="stu-three"><span class="mya">100%</span></div>
-                        <div class="stu-for"><span class="mya">30Day</span></div>
-                    </div>
-                    <hr />
-                    <!-- stu-mg -->
-                    <!-- stu-mg -->
-                    <div class="stu-mg">
-                        <div class="stu-one">
-                            <img src="img/profil.png" width="30" height="30" alt="" />
-                        </div>
-                        <div class="stu-tow"><h2>Abdulrahman Emad</h2></div>
-                        <div class="stu-three"><span class="mya">100%</span></div>
-                        <div class="stu-for"><span class="mya">30Day</span></div>
-                    </div>
-                    <hr />
-                    <!-- stu-mg -->
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="student-gender">
-                    <h2 class="stu-top">
-                        <span class="anrel"></span>Students By Gender:
-                    </h2>
-                    <hr />
-                    <div class="gender">
-                        <div class="coler">
-                            <div class="male-coler">45%</div>
-                            <div class="female-coler">45%</div>
-                        </div>
-                        <!-- froom -->
-                        <div class="froom">
-                            <div class="form-check male form-check-inline">
-                                <input
-                                    class="form-check-input maleee"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio1"
-                                    value="option1"
-                                />
-                                <label class="form-check-label" for="inlineRadio1"
-                                >Male</label
-                                >
+                    @php
+                        $st = \App\Models\StudentAttendance::get();
+                    @endphp
+                    @if($st->count() > 0)
+                        @foreach($st as $item)
+                            <div class="stu-mg">
+                                <div class="stu-one">
+                                    <img src="{{asset('dashboard/uploads/staffs/' . $item->student->image)}}" width="30" height="30" alt="" />
+                                </div>
+                                <div class="stu-tow"><h2>{{$item->student->name}}</h2></div>
+                                <div class="stu-three"><span class="mya">100%</span></div>
+                                <div class="stu-for"><span class="mya">30Day</span></div>
                             </div>
-                            <div class="form-check Female form-check-inline">
-                                <input
-                                    class="form-check-input femaleee"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio2"
-                                    value="option2"
-                                />
-                                <label class="form-check-label" for="inlineRadio2"
-                                >Female</label
-                                >
-                            </div>
-                        </div>
-                        <!-- froom -->
-                    </div>
+                            <hr />
+                            <!-- stu-mg -->
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
